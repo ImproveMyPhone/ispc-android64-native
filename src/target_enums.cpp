@@ -34,6 +34,11 @@
 /** @file target_enums.cpp
     @brief Define enums describing target platform.
 */
+// This file is modified, see
+// https://github.com/ImproveMyPhone/ispc-android64-native
+// for more details.
+// Changelog:
+// 2021-07-28T00:00:00.000Z Specify "Android" target if no other is suitable.
 
 #include "target_enums.h"
 
@@ -407,7 +412,7 @@ TargetOS GetHostOS() {
 #elif defined(ISPC_HOST_IS_APPLE) && !defined(ISPC_MACOS_TARGET_OFF)
     return TargetOS::macos;
 #else
-    return TargetOS::error;
+    return TargetOS::android;
 #endif
 }
 } // namespace ispc

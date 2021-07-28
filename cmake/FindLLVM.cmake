@@ -33,6 +33,13 @@
 #
 # ispc FindLLVM.cmake
 #
+# This file is modified, see
+# https://github.com/ImproveMyPhone/ispc-android64-native
+# for more details.
+# Changelog:
+# 2021-07-28T00:00:00.000Z Made FileCheck optional
+
+
 find_package(LLVM REQUIRED CONFIG)
     if (NOT LLVM_FOUND )
         message(FATAL_ERROR "LLVM package can't be found. \
@@ -97,7 +104,7 @@ if (ISPC_INCLUDE_TESTS)
     find_program(FILE_CHECK_EXECUTABLE NAMES FileCheck
         PATHS ${LLVM_TOOLS_BINARY_DIR} PATH_SUFFIXES bin NO_DEFAULT_PATH)
         if (NOT FILE_CHECK_EXECUTABLE)
-            message(FATAL_ERROR "Failed to find FileCheck" )
+		message(WARNING "Failed to find FileCheck" )
         endif()
         message(STATUS "FILE_CHECK_EXECUTABLE: ${FILE_CHECK_EXECUTABLE}")
 endif()

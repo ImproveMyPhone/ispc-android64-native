@@ -33,6 +33,13 @@
 #
 # ispc GenerateBuiltins.cmake
 #
+# This file is modified, see
+# https://github.com/ImproveMyPhone/ispc-android64-native
+# for more details.
+# Changelog:
+# 2021-07-28T00:00:00.000Z Removed 32 bit support.
+
+
 find_program(M4_EXECUTABLE m4)
     if (NOT M4_EXECUTABLE)
         message(FATAL_ERROR "Failed to find M4 macro processor" )
@@ -331,7 +338,7 @@ function (generate_target_builtins resultList)
     set(regular_targets ${ARGN})
     list(FILTER regular_targets EXCLUDE REGEX wasm)
     foreach (ispc_target ${regular_targets})
-        foreach (bit 32 64)
+        foreach (bit 64)
             foreach (os_name ${TARGET_OS_LIST_FOR_LL})
                 target_ll_to_cpp(target-${ispc_target} ${bit} ${os_name} output${os_name}${bit})
                 list(APPEND tmpList ${output${os_name}${bit}})
@@ -392,7 +399,7 @@ function (generate_common_builtins resultList)
     endif()
 
     message (STATUS "ISPC will be built with support of ${supported_oses} for ${supported_archs}")
-    foreach (bit 32 64)
+    foreach (bit 64)
         foreach (os_name "windows" "linux" "freebsd" "macos" "android" "ios" "ps4" "web")
             foreach (arch "x86" "arm" "wasm32")
                 builtin_to_cpp(${bit} ${os_name} ${arch} "${supported_archs}" "${supported_oses}" res${bit}${os_name}${arch})

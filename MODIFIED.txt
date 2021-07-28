@@ -1,0 +1,1 @@
+Note that this copy of ISPC is modified. See https://github.com/ImproveMyPhone/ispc-android64-native for more details.

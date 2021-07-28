@@ -33,6 +33,13 @@
 #
 # ispc CMakeLists.txt
 #
+# This file is modified, see
+# https://github.com/ImproveMyPhone/ispc-android64-native
+# for more details.
+# Changelog:
+# 2021-07-28T00:00:00.000Z Android by default; changed defaults; use 64 bit only.
+
+
 cmake_minimum_required(VERSION 3.13)
 
 if (UNIX)
@@ -53,13 +60,13 @@ option(X86_ENABLED "Enable x86 support" ${X86_HOST})
 option(ARM_ENABLED "Enable ARM support" ON)
 option(WASM_ENABLED "Enable experimental Web Assembly support" OFF)
 option(GENX_ENABLED "Enable GenX support" OFF)
-option(ISPC_INCLUDE_EXAMPLES "Generate build targets for the ISPC examples" ON)
+option(ISPC_INCLUDE_EXAMPLES "Generate build targets for the ISPC examples" OFF)
 option(ISPC_INCLUDE_DPCPP_EXAMPLES "Generate build targets for the ISPC/DPCPP interoperability examples" OFF)
 option(ISPC_INCLUDE_TESTS "Generate build targets for the ISPC tests." ON)
 option(ISPC_INCLUDE_BENCHMARKS "Generate build targets for the ISPC tests." OFF)
 option(ISPC_INCLUDE_UTILS "Generate build targets for the utils." ON)
 option(ISPC_PREPARE_PACKAGE "Generate build targets for ispc package" OFF)
-option(ISPC_NO_DUMPS "Turn off functionality, which requires LLVM dump() functions" OFF)
+option(ISPC_NO_DUMPS "Turn off functionality, which requires LLVM dump() functions" ON)
 
 option(ISPC_CROSS "Build ISPC with cross compilation support" OFF)
 # Default settings for cross compilation
@@ -115,7 +122,7 @@ else()
     elseif (CMAKE_SYSTEM_NAME STREQUAL "FreeBSD")
         set(ISPC_FREEBSD_TARGET ON)
     else()
-        set(ISPC_LINUX_TARGET ON)
+        set(ISPC_ANDROID_TARGET ON)
     endif()
 endif()
 
@@ -288,7 +295,7 @@ if (X86_ENABLED)
     list(APPEND LLVM_COMPONENTS x86)
 endif()
 if (ARM_ENABLED)
-    list(APPEND LLVM_COMPONENTS arm aarch64)
+    list(APPEND LLVM_COMPONENTS aarch64)
 endif()
 if (WASM_ENABLED)
     list(APPEND LLVM_COMPONENTS webassembly)
