@@ -34,6 +34,11 @@
 /** @file main.cpp
     @brief main() entrypoint implementation for ispc
 */
+// This file is modified, see
+// https://github.com/ImproveMyPhone/ispc-android64-native
+// for more details.
+// Changelog:
+// 2021-07-29T00:00:00.000Z Removed 32 bit
 
 #include "ispc.h"
 #include "module.h"
@@ -557,13 +562,6 @@ int main(int Argc, char *Argv[]) {
 #endif
 
 #ifdef ISPC_ARM_ENABLED
-    LLVMInitializeARMTargetInfo();
-    LLVMInitializeARMTarget();
-    LLVMInitializeARMAsmPrinter();
-    LLVMInitializeARMAsmParser();
-    LLVMInitializeARMDisassembler();
-    LLVMInitializeARMTargetMC();
-
     LLVMInitializeAArch64TargetInfo();
     LLVMInitializeAArch64Target();
     LLVMInitializeAArch64AsmPrinter();
