@@ -34,11 +34,11 @@
 /** @file target_enums.cpp
     @brief Define enums describing target platform.
 */
-// This file is modified, see
+// Modified by ImproveMyPhone
 // https://github.com/ImproveMyPhone/ispc-android64-native
-// for more details.
 // Changelog:
 // 2021-07-28T00:00:00.000Z Specify "Android" target if no other is suitable.
+// 2021-11-18T00:00:00.000Z Updated comments for consistency.
 
 #include "target_enums.h"
 

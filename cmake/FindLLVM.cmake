@@ -33,11 +33,11 @@
 #
 # ispc FindLLVM.cmake
 #
-# This file is modified, see
+# Modified by ImproveMyPhone
 # https://github.com/ImproveMyPhone/ispc-android64-native
-# for more details.
 # Changelog:
 # 2021-07-28T00:00:00.000Z Made FileCheck optional
+# 2021-11-18T00:00:00.000Z Updated comments for consistency.
 
 
 find_package(LLVM REQUIRED CONFIG)
